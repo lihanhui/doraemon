@@ -1,0 +1,7 @@
+set (PACKAGE_VERSION "@doraemon_VERSION@")
+if (NOT "${PACKAGE_FIND_VERSION}" VERSION_GREATER "@doraemon_VERSION@")
+    set (PACKAGE_VERSION_COMPATIBLE 1)      # compatible with older
+    if ("${PACKAGE_FIND_VERSION}" VERSION_EQUAL "@doraemon_VERSION@")
+        set (PACKAGE_VERSION_EXACT 1)       # excat match for this version
+    endif ()
+endif ()

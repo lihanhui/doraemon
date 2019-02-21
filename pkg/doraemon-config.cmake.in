@@ -1,0 +1,9 @@
+get_filename_component (_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
+get_filename_component (_prefix "${_dir}/../../.." ABSOLUTE)
+include ("${_dir}/doraemon-targets.cmake")
+set (doraemon_INCLUDE_DIRS "${_prefix}/include")
+message("doraemon include dir: ${doraemon_INCLUDE_DIRS}")
+
+find_library(doraemon_LIBRARIES doraemon HINTS "${_prefix}/lib")
+set_target_properties(doraemon PROPERTIES IMPORTED_LOCATION "${doraemon_LIBRARIES}")
+message("doraemon lib dir: ${doraemon_LIBRARY_PATH}")
