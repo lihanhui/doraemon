@@ -31,10 +31,10 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 
 
 #####################################
-add_executable(doraemon-test src/doraemon.cxx)
+add_executable(doraemon-test src/doraemon.cxx src/conf/config.cxx)
 target_link_libraries(doraemon-test  ${EXTRA_LIBS})
 
-add_library(doraemon SHARED src/doraemon.cxx)
+add_library(doraemon SHARED src/doraemon.cxx src/conf/config.cxx)
 #set_target_properties(wrapper PROPERTIES
 #  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
 #  IMPORTED_LOCATION "${CMAKE_INSTALL_PREFIX}"

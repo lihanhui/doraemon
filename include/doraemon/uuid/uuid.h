@@ -1,0 +1,4 @@
+#ifndef DORAEMON_UUID_UUID_H
+#define DORAEMON_UUID_UUID_H
+
+#endif
