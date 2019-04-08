@@ -3,7 +3,7 @@
 
 namespace doraemon {
 
-struct md5 {
+struct uuid {
     static std::string uuid(){
         
     }
