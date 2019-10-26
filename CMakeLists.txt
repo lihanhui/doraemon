@@ -31,21 +31,15 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 
 
 #####################################
-add_executable(doraemon-test src/doraemon.cxx 
-            src/conf/config.cxx
-            src/md5/md5.cxx)
-target_link_libraries(doraemon-test  ${EXTRA_LIBS})
-
 add_library(doraemon SHARED src/doraemon.cxx 
             src/conf/config.cxx
-            src/md5/md5.cxx)
-#set_target_properties(wrapper PROPERTIES
-#  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-#  IMPORTED_LOCATION "${CMAKE_INSTALL_PREFIX}"
-#)
-  
+            src/md5/md5.cxx
+            src/base64/base64.cxx)
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)
 target_link_libraries(doraemon  ${EXTRA_LIBS})
+
+add_executable(doraemon-test src/doraemon.cxx)
+target_link_libraries(doraemon-test  ${EXTRA_LIBS} doraemon)
 
 # add the install targets
 install (TARGETS doraemon DESTINATION lib
