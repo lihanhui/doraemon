@@ -7,6 +7,7 @@
 #include "doraemon/md5/md5.h"
 #include "doraemon/random/random_util.h"
 #include "doraemon/base64/base64.h"
+#include "doraemon/queue/queue_fifo.h"
 
 class MyJsonConf: public doraemon::jsonable{
     std::string to_json() override{
@@ -17,6 +18,12 @@ class MyJsonConf: public doraemon::jsonable{
     }
 };
 int main(int argc, char * argv[]){
+    doraemon::queue::queue_fifo<char> queue;
+    queue.push(nullptr);
+    std::cout<<queue.count()<<std::endl;
+    char * data = queue.pop();
+    std::cout<<data<<std::endl;
+  
     for(int i = 0; i < 20; i++){
         std::cout<<doraemon::random_util::random(0, 10)<<std::endl;
     }
