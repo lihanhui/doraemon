@@ -8,6 +8,8 @@
 #include "doraemon/random/random_util.h"
 #include "doraemon/base64/base64.h"
 #include "doraemon/queue/queue_fifo.h"
+#include "doraemon/lock/spin_lock.h"
+#include "doraemon/lock/scoped_lock.h"
 
 class MyJsonConf: public doraemon::jsonable{
     std::string to_json() override{
@@ -18,6 +20,13 @@ class MyJsonConf: public doraemon::jsonable{
     }
 };
 int main(int argc, char * argv[]){
+    doraemon::concurrency::spin_lock spin_lck;
+    {
+        doraemon::concurrency::scoped_lock lck(spin_lck);
+    }
+    spin_lck.lock();
+    spin_lck.lock();
+
     doraemon::queue::queue_fifo<char> queue;
     queue.push(nullptr);
     std::cout<<queue.count()<<std::endl;

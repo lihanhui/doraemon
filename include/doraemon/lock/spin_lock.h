@@ -3,12 +3,12 @@
 
 #include <atomic>
 
-#inlcude "doraemon/lock/lock.h"
+#include "doraemon/lock/lock.h"
 
 namespace doraemon{
-namespace lock{
+namespace concurrency{
 
-class spin_lock : public lock{
+class spin_lock : public lockable {
 private:
     std::atomic_flag lck = ATOMIC_FLAG_INIT;
 

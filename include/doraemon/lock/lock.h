@@ -2,8 +2,8 @@
 #define DORAEMON_LOCK_LOCK_H 
 
 namespace doraemon{
-namespace lock{
-class lock{
+namespace concurrency{
+class lockable{
 
 public:
     virtual void lock() = 0;
