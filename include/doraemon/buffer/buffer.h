@@ -7,4 +7,12 @@ struct Buffer
     unsigned char *data;
 };
 
+
+struct TimedBuffer
+{
+	long timestamp;
+	unsigned int len;
+    unsigned char *data;
+};
+
 #endif

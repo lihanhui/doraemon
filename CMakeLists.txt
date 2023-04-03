@@ -34,6 +34,7 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 add_library(doraemon SHARED src/doraemon.cxx 
             src/conf/config.cxx
             src/md5/md5.cxx
+            src/net/net.cxx
             src/base64/base64.cxx)
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)
 target_link_libraries(doraemon  ${EXTRA_LIBS})
