@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 
 set (CXX_STANDARD "c++17")
-set (CMAKE_CXX_FLAGS "-g ${CMAKE_CXX_FLAGS} -std=${CXX_STANDARD}")
+set (CMAKE_CXX_FLAGS "-fPIC -g ${CMAKE_CXX_FLAGS} -std=${CXX_STANDARD}")
 
 project (doraemon VERSION 1.0.0)
 
