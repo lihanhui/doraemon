@@ -30,11 +30,13 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 #      INSTALL_COMMAND "" )
 
 
+add_definitions(-DDORAMEMON_OS_FAMILY_UNIX)
 #####################################
 add_library(doraemon SHARED src/doraemon.cxx 
             src/atomic/atomic_counter.cxx
             src/atomic/ref_counted_object.cxx
             src/conf/config.cxx
+            src/ipc/shared_memory.cxx
             src/md5/md5.cxx
             src/net/net.cxx
             src/loader/loader.cxx
