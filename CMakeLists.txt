@@ -32,6 +32,8 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 
 #####################################
 add_library(doraemon SHARED src/doraemon.cxx 
+            src/atomic/atomic_counter.cxx
+            src/atomic/ref_counted_object.cxx
             src/conf/config.cxx
             src/md5/md5.cxx
             src/net/net.cxx

@@ -4,15 +4,15 @@
 namespace doraemon::buffer{
 struct Buffer
 {
-	unsigned int len;
+    unsigned int len;
     unsigned char *data;
 };
 
 
 struct TimedBuffer
 {
-	long timestamp;
-	unsigned int len;
+    long timestamp;	
+    unsigned int len;
     unsigned char *data;
 };
 };
