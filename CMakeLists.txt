@@ -39,6 +39,7 @@ add_library(doraemon SHARED src/doraemon.cxx
             src/ipc/shared_memory.cxx
             src/md5/md5.cxx
             src/net/net.cxx
+            src/sys/system.cxx
             src/loader/loader.cxx
             src/base64/base64.cxx)
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)

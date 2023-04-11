@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <string>
 
 #include "doraemon/doraemon.h"
 #include "doraemon/conf/config.h"
@@ -10,6 +11,7 @@
 #include "doraemon/queue/queue_fifo.h"
 #include "doraemon/lock/spin_lock.h"
 #include "doraemon/lock/scoped_lock.h"
+#include "doraemon/sys/system.h"
 
 class MyJsonConf: public doraemon::Jsonable{
     std::string to_json() override{
@@ -20,6 +22,7 @@ class MyJsonConf: public doraemon::Jsonable{
     }
 };
 int main(int argc, char * argv[]){
+    char s1 = doraemon::System::PathSeperator;
     doraemon::SpinLock spin_lck;
     {
         doraemon::ScopedLock lck(spin_lck);
