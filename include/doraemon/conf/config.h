@@ -7,30 +7,30 @@
 
 namespace doraemon {
 
-struct config final{
+struct Config final{
 private:
     std::string conf_path = "./etc/conf";
 
 private:
-    static config * config_ ;
+    static Config * config_ ;
     
-    config(){}
-    config(const std::string & conf_path) {
+    Config(){}
+    Config(const std::string & conf_path) {
         this->conf_path = conf_path;
     }
 public:
-    static config * get_config() {
+    static Config * get_config() {
         return config_;
     }
-    static config * init(const std::string & conf_path) {
+    static Config * init(const std::string & conf_path) {
         if (config_ == nullptr) {
-            config_ = new config(conf_path);
+            config_ = new Config(conf_path);
         }
         return config_;
     }
 
     template <typename T> T read_conf(const std::string & conf_file) {
-        return json_util::from_json_file<T>(this->conf_path + "/" + conf_file);
+        return JsonUtil::from_json_file<T>(this->conf_path + "/" + conf_file);
     }
 };
 

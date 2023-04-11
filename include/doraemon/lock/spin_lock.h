@@ -6,9 +6,8 @@
 #include "doraemon/lock/lock.h"
 
 namespace doraemon{
-namespace concurrency{
 
-class spin_lock : public lockable {
+class SpinLock : public Lockable {
 private:
     std::atomic_flag lck = ATOMIC_FLAG_INIT;
 
@@ -22,7 +21,7 @@ public:
         lck.clear (std::memory_order_release);
     }
 };
-};
+
 };
 
 #endif

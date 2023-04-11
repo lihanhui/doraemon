@@ -3,14 +3,14 @@
 
 #include "doraemon/loader/loader.h"
 
-using namespace doraemon::loader;
+using namespace doraemon;
 
-handle loader::load(std::string& filename)
+Handle Loader::load(std::string& filename)
 {
     return dlopen(filename.c_str(), RTLD_LAZY);
 }
 
-void loader::unload(handle h)
+void Loader::unload(Handle h)
 {
     dlclose(h);
 }

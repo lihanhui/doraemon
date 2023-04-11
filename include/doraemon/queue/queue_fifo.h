@@ -1,21 +1,21 @@
 #include <mutex>
 
 namespace doraemon{
-    namespace queue{
-        template<typename T> struct queue_node{
-            queue_node* _next;
+    
+        template<typename T> struct QueueNode{
+            QueueNode* _next;
             T* _data;
         public:
-            queue_node(T* data = nullptr):_next(nullptr), _data(data){}    
+            QueueNode(T* data = nullptr):_next(nullptr), _data(data){}    
         };
 
-        template<typename T> class queue_fifo{
+        template<typename T> class QueueFifo{
         public:
-            queue_fifo():_head(nullptr), _tail(nullptr), _count(0){}
+            QueueFifo():_head(nullptr), _tail(nullptr), _count(0){}
         public:
             void push(T* t){
                 std::scoped_lock lock(_lock);
-                queue_node<T> *node = new queue_node<T>(t);
+                QueueNode<T> *node = new QueueNode<T>(t);
                 if(_tail){
                     _tail->_next = node;
                     _tail = node;
@@ -27,7 +27,7 @@ namespace doraemon{
             }
             T* pop(){
                 std::scoped_lock lock(_lock);
-                queue_node<T>* head = _head;
+                QueueNode<T>* head = _head;
                 T* data = nullptr;
                 if(_head){
                     T* data = head->_data;
@@ -47,8 +47,8 @@ namespace doraemon{
             }
             void clear(){
                 std::scoped_lock lock(_lock);
-                queue_node<T>* head = _head;
-                queue_node<T>* next = nullptr;
+                QueueNode<T>* head = _head;
+                QueueNode<T>* next = nullptr;
                 while(head){
                     next = head->_next;
                     delete head;
@@ -59,10 +59,10 @@ namespace doraemon{
             }
         private:
             std::mutex _lock;
-            queue_node<T>* _head;
-            queue_node<T>* _tail;
+            QueueNode<T>* _head;
+            QueueNode<T>* _tail;
             int _count;
             
         };
-};
+
 };

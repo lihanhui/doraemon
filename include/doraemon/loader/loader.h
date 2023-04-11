@@ -4,18 +4,17 @@
 #include <string>
 
 namespace doraemon{
-namespace loader{
 
-using handle = void*;
+using Handle = void*;
 
-class loader{
+class Loader{
 
 
 public:
-    static handle load(std::string& filename);
-    static void unload(handle h);
+    static Handle load(std::string& filename);
+    static void unload(Handle h);
 };
-};
+
 };
 
 #endif

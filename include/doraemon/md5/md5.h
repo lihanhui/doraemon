@@ -40,17 +40,17 @@ documentation and/or software.
 link: http://www.zedwood.com/article/cpp-md5-function 
 */
 
-struct md5 {
+struct Md5 {
     static std::string digest(const std::string & input);
     typedef unsigned int size_type; // must be 32bit
  
-    md5();
-    md5(const std::string& text);
+    Md5();
+    Md5(const std::string& text);
     void update(const unsigned char *buf, size_type length);
     void update(const char *buf, size_type length);
-    md5& finalize();
+    Md5& finalize();
     std::string hexdigest() const;
-    friend std::ostream& operator<<(std::ostream&, md5 digest);
+    friend std::ostream& operator<<(std::ostream&, Md5 digest);
  
 private:
     void init();

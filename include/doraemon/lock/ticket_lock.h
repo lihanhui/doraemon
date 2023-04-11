@@ -6,9 +6,8 @@
 #include "doraemon/lock/lock.h"
 
 namespace doraemon{
-namespace concurrency{
 
-class ticket_lock : public lockable {
+class TicketLock : public Lockable {
 private:
     std::atomic_size_t serving_ticket_num = {0};
     std::atomic_size_t next_ticket_num = {0};

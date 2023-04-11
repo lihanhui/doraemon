@@ -5,7 +5,7 @@
 #include <string>
 namespace doraemon{
 
-struct base64 {
+struct Base64 {
     static std::string encode(unsigned char const *, unsigned int len);
     static std::string decode(std::string const &s);
 };

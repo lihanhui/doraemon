@@ -7,17 +7,17 @@
 
 namespace doraemon{
 
-struct json_util {
+struct JsonUtil {
     template <typename T>
-    static typename std::enable_if<std::is_base_of<jsonable, T>::value, std::string>::type to_json(const T & t){
+    static typename std::enable_if<std::is_base_of<Jsonable, T>::value, std::string>::type to_json(const T & t){
         return "";
     }
     template <typename T> 
-    static typename std::enable_if<std::is_base_of<jsonable, T>::value, T>::type from_json(const std::string & json){
+    static typename std::enable_if<std::is_base_of<Jsonable, T>::value, T>::type from_json(const std::string & json){
         return T();
     }
     template <typename T> 
-    static typename std::enable_if<std::is_base_of<jsonable, T>::value, T>::type from_json_file(const std::string & file){
+    static typename std::enable_if<std::is_base_of<Jsonable, T>::value, T>::type from_json_file(const std::string & file){
         return T();
     }
 };

@@ -2,4 +2,4 @@
 
 using namespace doraemon;
 
-config * config::config_ = nullptr;
+Config * Config::config_ = nullptr;

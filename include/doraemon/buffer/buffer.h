@@ -1,7 +1,7 @@
 #ifndef DORAEMON_BUFFER_BUFFER_H
 #define DORAEMON_BUFFER_BUFFER_H
 
-namespace doraemon::buffer{
+namespace doraemon{
 struct Buffer
 {
     unsigned int len;

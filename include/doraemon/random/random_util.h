@@ -5,7 +5,7 @@
 
 namespace doraemon{
 
-struct random_util {
+struct RandomUtil {
 
     static int random(int start, int end){
         // Seed with a real random value, if available

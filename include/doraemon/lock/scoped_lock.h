@@ -6,22 +6,21 @@
 #include "doraemon/lock/lock.h"
 
 namespace doraemon{
-namespace concurrency{
 
-class scoped_lock{
+class ScopedLock{
 private:
-    lockable* lck;
+    Lockable* lck;
 
 private:
-    scoped_lock() {}
+    ScopedLock() {}
 public:
-    scoped_lock(lockable &lck) { 
+    ScopedLock(Lockable &lck) { 
         this->lck = &lck;
         this->lck->lock(); 
     }
-    ~scoped_lock() { this->lck->unlock(); }
+    ~ScopedLock() { this->lck->unlock(); }
 };
-};
+
 };
 
 #endif
