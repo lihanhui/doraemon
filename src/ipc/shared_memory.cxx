@@ -16,9 +16,9 @@
 
 #if defined(DORAMEMON_NO_SHAREDMEMORY)
 #include "shared_memory_dummy.cxx"
-#elif defined(DORAMEMON_OS_FAMILY_WINDOWS)
+#elif defined(__OS_FAMILY_WINDOWS__)
 #include "shared_memory_win32.cxx"
-#elif defined(DORAMEMON_OS_FAMILY_UNIX)
+#elif defined(__OS_FAMILY_UNIX__)
 #include "shared_memory_posix.cxx"
 #else
 #include "shared_memory_dummy.cxx"

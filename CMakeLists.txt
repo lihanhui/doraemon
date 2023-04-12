@@ -21,16 +21,26 @@ message("fmt-libraries - ${FMT_LIBRARY}")
 #add_subdirectory(src/wrapper)
 #set(EXTRA_LIBS ${EXTRA_LIBS} wrapper)
 
-#include(ExternalProject)
-#ExternalProject_Add (
-#      fmt
-#      GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-#      GIT_TAG "5.3.0"
-#      UPDATE_COMMAND ""
-#      INSTALL_COMMAND "" )
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    MESSAGE(STATUS "current platform: Linux ")
+    add_definitions( -D__OS_FAMILY_LINUX__  )
+    add_definitions( -D__OS_FAMILY_UNIX__  )
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    MESSAGE(STATUS "current platform: Windows")
+    add_definitions( -D__OS_FAMILY_WINDOWS__  )
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+    MESSAGE(STATUS "current platform: FreeBSD")
+    add_definitions( -D__OS_FAMILY_FREEBSD__  )
+    add_definitions( -D__OS_FAMILY_UNIX__  )
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    MESSAGE(STATUS "current platform: APPLE")
+    add_definitions( -D__OS_FAMILY_APPLE__  )
+    add_definitions( -D__OS_FAMILY_UNIX__  )
+ELSE ()
+    MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
+    add_definitions( -D__OS_FAMILY_UNKNOWN__  )
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
-
-add_definitions(-DDORAMEMON_OS_FAMILY_UNIX)
 #####################################
 add_library(doraemon SHARED src/doraemon.cxx 
             src/atomic/atomic_counter.cxx
