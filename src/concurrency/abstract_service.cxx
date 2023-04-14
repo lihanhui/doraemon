@@ -5,19 +5,26 @@
 namespace doraemon{
     
     void AbstractService::start() {
+        this->service_status_ = ServiceStatus::Running;
         this->thread_ = std::thread([this]{
                 run();
-            ;});
+            });
     }
     void AbstractService::pause() {
-        this->service_status_ = ServiceStatus::Paused;
+        if(this->service_status_ == ServiceStatus::Running){
+            this->service_status_ = ServiceStatus::Paused;
+        }
     }
     void AbstractService::stop() {
-        this->service_status_ = ServiceStatus::Stopped;
+        if(this->service_status_ <= ServiceStatus::Running){
+            this->service_status_ = ServiceStatus::Stopped;
+        }
     }
 
     void AbstractService::resume(){
-        this->service_status_ = ServiceStatus::Running;
+        if(this->service_status_ == ServiceStatus::Paused){
+            this->service_status_ = ServiceStatus::Running;
+        }
     }
 
     void AbstractService::run(){
