@@ -24,9 +24,7 @@ namespace doraemon{
         bool is_alive() override { return service_status_ <  ServiceStatus::Stopped; }
 
         ServiceStatus get_status() override {return service_status_;}
-    protected:
-        // 
-        virtual void invoke() = 0;
+
     };
 
 };
