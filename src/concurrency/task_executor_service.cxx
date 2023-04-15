@@ -10,28 +10,41 @@ namespace doraemon{
     using namespace std::chrono_literals;
 	std::shared_ptr<Runnable> SingleThreadTaskExecutorService::get_one(){
 		std::shared_ptr<Runnable> r = nullptr;
-        {
-        	std::lock_guard<std::mutex> lck (this->queue_mtx_);
-        	if(this->tasks_.size() > 0){
-        		r = this->tasks_.front();
-                this->tasks_.pop();
-        	}
+        if(this->tasks_.size() > 0){
+            r = this->tasks_.front();
+            this->tasks_.pop();
         }
         return r;
     	
     }
-	void SingleThreadTaskExecutorService::internal_run(){
-		std::shared_ptr<Runnable> r = nullptr;
-    	while(r = get_one(), r){
-    		if(r->is_runnable()) r->run();
-    	}
-    	
+	void SingleThreadTaskExecutorService::run_one(std::shared_ptr<Runnable> r){
+        try{
+            if( this->is_runnable() && r->is_runnable()){
+                r->run();
+            }
+        }catch(...){
+
+        }
     }
     void SingleThreadTaskExecutorService::run(){
     	try{
+            while(this->is_alive()){
+                if(!this->is_runnable()) {
+                    std::this_thread::sleep_for(10ms);
+                    continue;
+                }
+                std::shared_ptr<Runnable> r = nullptr;
+                {
+                    std::unique_lock lck(this->queue_mtx_);
+                    r = get_one();
 
-  			internal_run();
-  			std::this_thread::sleep_for(10ms);
+                    if(r) {
+                        run_one(r);
+                    }else{
+                        cv_.wait_for(lck, 10ms); // wait for incoming tasks
+                    } 
+                }
+            }
     	}
     	catch(...){
 
@@ -41,5 +54,6 @@ namespace doraemon{
     void SingleThreadTaskExecutorService::submit(std::shared_ptr<Runnable> t){
     	std::lock_guard<std::mutex> lck (this->queue_mtx_);
     	this->tasks_.push(t);
+        cv_.notify_all();
     }
 };
