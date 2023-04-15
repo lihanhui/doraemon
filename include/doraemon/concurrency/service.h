@@ -18,9 +18,6 @@ namespace doraemon{
         virtual void resume() = 0;
         virtual void stop() = 0;
         virtual ServiceStatus get_status() = 0;
-
-        virtual bool is_runnable() = 0;
-        virtual bool is_alive() = 0;
     };
 
 };

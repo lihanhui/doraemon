@@ -23,7 +23,7 @@ namespace doraemon{
 	void SingleThreadTaskExecutorService::internal_run(){
 		std::shared_ptr<Runnable> r = nullptr;
     	while(r = get_one(), r){
-    		r->run();
+    		if(r->is_runnable()) r->run();
     	}
     	
     }

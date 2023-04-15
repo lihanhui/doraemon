@@ -17,8 +17,8 @@ namespace doraemon{
         void start() override;
         void cancel() override;
         void run() override;
-        bool is_runnable() { return task_status_ == TaskStatus::Running; }
-        bool is_alive() { return task_status_ <  TaskStatus::Cancelled; }
+        bool is_runnable() override { return task_status_ == TaskStatus::Running; }
+        bool is_alive() override { return task_status_ <  TaskStatus::Cancelled; }
 
         TaskStatus get_status() override {return task_status_;}
     protected:
