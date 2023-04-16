@@ -4,8 +4,11 @@
 namespace doraemon{
 
     struct Runnable{
+    protected:
     	virtual void run() = 0;
-        virtual bool is_runnable() = 0;
+    public:
+        virtual void start() = 0;
+        virtual bool is_running() = 0;
         virtual bool is_alive() = 0;
     };
 };

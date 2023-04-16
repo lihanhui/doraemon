@@ -13,7 +13,6 @@ namespace doraemon{
 	};
 
     struct Task : public Runnable{
-        virtual void start() = 0;
         virtual void cancel() = 0;
         virtual TaskStatus get_status() = 0;
     };

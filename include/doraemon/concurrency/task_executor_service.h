@@ -18,10 +18,11 @@ namespace doraemon{
             std::condition_variable cv_;
         public:
             SingleThreadTaskExecutorService(){}
+        protected:
             void run() override;
 
             void submit(std::shared_ptr<Runnable> t) override;
-        protected:
+        private:
             void run_one(std::shared_ptr<Runnable> r);
             std::shared_ptr<Runnable> get_one();
 

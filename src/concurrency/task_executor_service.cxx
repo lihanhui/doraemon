@@ -19,8 +19,8 @@ namespace doraemon{
     }
 	void SingleThreadTaskExecutorService::run_one(std::shared_ptr<Runnable> r){
         try{
-            if( this->is_runnable() && r->is_runnable()){
-                r->run();
+            if( this->is_running() && r->is_alive() && !r->is_running()){
+                r->start();
             }
         }catch(...){
 
@@ -29,7 +29,7 @@ namespace doraemon{
     void SingleThreadTaskExecutorService::run(){
     	try{
             while(this->is_alive()){
-                if(!this->is_runnable()) {
+                if(!this->is_running()) {
                     std::this_thread::sleep_for(10ms);
                     continue;
                 }

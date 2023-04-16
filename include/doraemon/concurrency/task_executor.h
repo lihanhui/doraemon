@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "doraemon/concurrency/executor.h"
+#include "doraemon/concurrency/runnable.h"
 
 namespace doraemon{
 
