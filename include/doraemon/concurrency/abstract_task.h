@@ -22,6 +22,7 @@ namespace doraemon{
         bool is_alive() override { return task_status_ <  TaskStatus::Cancelled; }
 
         TaskStatus get_status() override {return task_status_;}
+        size_t hash_code() override {return (size_t)(void*)this;}
     protected:
         // 
         virtual void invoke() = 0;

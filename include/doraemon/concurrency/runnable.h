@@ -10,6 +10,7 @@ namespace doraemon{
         virtual void start() = 0;
         virtual bool is_running() = 0;
         virtual bool is_alive() = 0;
+        virtual size_t hash_code() = 0;
     };
 };
 

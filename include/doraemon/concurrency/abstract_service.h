@@ -27,6 +27,8 @@ namespace doraemon{
 
         ServiceStatus get_status() override {return service_status_;}
 
+        size_t hash_code() override {return (size_t)(void*)this;}
+
     };
 
 };
