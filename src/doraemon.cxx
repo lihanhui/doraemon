@@ -12,6 +12,10 @@
 #include "doraemon/lock/spin_lock.h"
 #include "doraemon/lock/scoped_lock.h"
 #include "doraemon/sys/system.h"
+#include "doraemon/concurrency/abstract_task.h"
+#include "doraemon/concurrency/thread_pool.h"
+
+using namespace doraemon;
 
 class MyJsonConf: public doraemon::Jsonable{
     std::string to_json() override{
@@ -21,8 +25,26 @@ class MyJsonConf: public doraemon::Jsonable{
     
     }
 };
+template<typename T=int> class MyTask: public doraemon::AbstractTask<T>{
+public:
+    MyTask(){
+        std::cout<<"constructor"<<std::endl;
+    } 
+    void run() override {
+        std::cout<<"run"<<std::endl;
+        this->get_promise()->success(1);
+    }
+};
+//template std::shared_ptr<doraemon::Future<int>> doraemon::Executor::submit<int>(std::shared_ptr<doraemon::Task<int>>);
 int main(int argc, char * argv[]){
-    char s1 = doraemon::System::PathSeperator;
+    doraemon::ThreadPool *tp = new doraemon::SimpleThreadPool(2);
+    tp->start();
+
+    std::shared_ptr<doraemon::Task<int>> t = std::make_shared<MyTask<int>>();
+    tp->get_executor()->submit<int>(t);
+
+    
+    /*char s1 = doraemon::System::PathSeperator;
     doraemon::SpinLock spin_lck;
     {
         doraemon::ScopedLock lck(spin_lck);
@@ -41,7 +63,7 @@ int main(int argc, char * argv[]){
     }
     doraemon::Config::init("")->read_conf<MyJsonConf>("file");
     std::cout<<doraemon::Md5::digest("grape")<<std::endl;
-
+    //*/
     const std::string s =
         "René Nyffenegger\n"
         "http://www.renenyffenegger.ch\n"

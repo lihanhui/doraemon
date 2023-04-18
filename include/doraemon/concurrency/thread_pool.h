@@ -10,12 +10,12 @@
 
 namespace doraemon{
 
-    struct ThreadPool{
+    struct ThreadPool: public AbstractService{
     	virtual std::shared_ptr<Executor> get_executor() = 0;
 
     };
 
-    class SimpleThreadPool: public ThreadPool, public AbstractService{
+    class SimpleThreadPool: public ThreadPool{
     private:
         size_t count_;
         std::vector<std::shared_ptr<SingleThreadTaskExecutorService>> executors_;

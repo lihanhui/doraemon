@@ -1,11 +1,14 @@
 #ifndef DORAEMON_CONCURRENCY_PROMISE_H
 #define DORAEMON_CONCURRENCY_PROMISE_H
 
-#include "future"
+#include <future>
+
+#include "doraemon/concurrency/future.h"
+
 namespace doraemon
 {
 
-template <typename T> class Promise: public std::promise<T>{
+template <typename T> class Promise: public Future<T>, public std::promise<T>{
 public:
      /**
      * Marks this future as a success and notifies all

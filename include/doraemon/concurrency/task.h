@@ -20,6 +20,7 @@ namespace doraemon{
         virtual TaskStatus get_status() = 0;
 
         virtual std::shared_ptr<Promise<T>> get_promise() = 0;
+        virtual size_t hash_code() = 0;
     };
 
 };

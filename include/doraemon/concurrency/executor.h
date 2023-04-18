@@ -9,7 +9,12 @@
 namespace doraemon{
 
     struct Executor{
-    	 template<class T> std::shared_ptr<Future<T>> submit(std::shared_ptr<Task<T>> t) ;
+    	template<class T> std::shared_ptr<Future<T>> submit(std::shared_ptr<Task<T>> t) {
+            this->submit0(t);
+            return t->get_promise();
+        }
+    protected:
+        virtual void submit0(std::shared_ptr<Runnable> t) = 0;
     };
 };
 

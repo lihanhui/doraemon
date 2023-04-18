@@ -8,6 +8,7 @@
 
 #include "doraemon/concurrency/task.h"
 #include "doraemon/concurrency/default_promise.h"
+#include "doraemon/runtime/runtime_error.h"
 
 namespace doraemon{
 
@@ -53,7 +54,7 @@ namespace doraemon{
         }
     protected:
         // 
-        virtual void invoke() = 0;
+        //virtual void invoke() = 0;
     };
 
 };

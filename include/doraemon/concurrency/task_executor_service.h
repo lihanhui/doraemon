@@ -21,11 +21,10 @@ namespace doraemon{
         protected:
             void run() override;
         public:
-            template<typename T> std::shared_ptr<Future<T>> submit(std::shared_ptr<Task<T>> t){
+            void submit0(std::shared_ptr<Runnable> t) override{
                 std::lock_guard<std::mutex> lck (this->queue_mtx_);
                 this->tasks_.push(t);
                 cv_.notify_all();
-                return t->get_promise();
             }
         private:
             void run_one(std::shared_ptr<Runnable> r);
