@@ -51,9 +51,4 @@ namespace doraemon{
     	}
     }
 
-    void SingleThreadTaskExecutorService::submit(std::shared_ptr<Runnable> t){
-    	std::lock_guard<std::mutex> lck (this->queue_mtx_);
-    	this->tasks_.push(t);
-        cv_.notify_all();
-    }
 };

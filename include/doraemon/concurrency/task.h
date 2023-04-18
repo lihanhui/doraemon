@@ -12,9 +12,11 @@ namespace doraemon{
         Aborted = 16 // aborted cause some exceptions
 	};
 
-    struct Task : public Runnable{
+    template<typename T> struct Task : public Runnable{
         virtual void cancel() = 0;
         virtual TaskStatus get_status() = 0;
+
+        virtual std::shared_ptr<Promise<T>> get_promise() = 0;
     };
 
 };

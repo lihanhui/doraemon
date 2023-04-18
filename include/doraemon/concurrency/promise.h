@@ -1,0 +1,50 @@
+#ifndef DORAEMON_CONCURRENCY_PROMISE_H
+#define DORAEMON_CONCURRENCY_PROMISE_H
+
+#include "future"
+namespace doraemon
+{
+
+template <typename T> class Promise: public std::promise<T>{
+public:
+     /**
+     * Marks this future as a success and notifies all
+     * listeners.
+     *
+     * If it is success or failed already it will throw an {@link IllegalStateException}.
+     */
+    virtual bool success(const T v) = 0;
+
+    /**
+     * Marks this future as a success and notifies all
+     * listeners.
+     *
+     * @return {@code true} if and only if successfully marked this future as
+     *         a success. Otherwise {@code false} because this future is
+     *         already marked as either a success or a failure.
+     */
+    virtual bool try_success(const T v) = 0;
+
+    /**
+     * Marks this future as a failure and notifies all
+     * listeners.
+     *
+     * If it is success or failed already it will throw an {@link IllegalStateException}.
+     */
+    virtual bool failure(std::exception_ptr cause) = 0;
+
+    /**
+     * Marks this future as a failure and notifies all
+     * listeners.
+     *
+     * @return {@code true} if and only if successfully marked this future as
+     *         a failure. Otherwise {@code false} because this future is
+     *         already marked as either a success or a failure.
+     */
+    virtual bool try_failure(std::exception_ptr cause) = 0;
+
+    virtual bool done() = 0;
+};
+
+}; // namespace aquaman
+#endif

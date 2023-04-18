@@ -3,12 +3,13 @@
 
 #include <memory>
 
-#include "doraemon/concurrency/runnable.h"
+#include "doraemon/concurrency/future.h"
+#include "doraemon/concurrency/task.h"
 
 namespace doraemon{
 
     struct Executor{
-    	virtual void submit(std::shared_ptr<Runnable> t) = 0;
+    	 template<class T> std::shared_ptr<Future<T>> submit(std::shared_ptr<Task<T>> t) ;
     };
 };
 
