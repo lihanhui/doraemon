@@ -1,7 +1,10 @@
 #ifndef DORAEMON_CONCURRENCY_TASK_H
 #define DORAEMON_CONCURRENCY_TASK_H
 
+#include <memory>
+
 #include "doraemon/concurrency/runnable.h"
+#include "doraemon/concurrency/promise.h"
 
 namespace doraemon{
 	enum class TaskStatus{

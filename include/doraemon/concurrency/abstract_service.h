@@ -11,10 +11,12 @@ namespace doraemon{
 
     class AbstractService : public Service{
     private:
-        ServiceStatus service_status_;
-        std::mutex service_mtx_;
+        //std::mutex service_mtx_;
         std::condition_variable cv_;
         std::thread thread_;
+    protected:
+        ServiceStatus service_status_;
+        std::mutex service_mtx_;
     public:
         AbstractService(){ service_status_ = ServiceStatus::Initialized; }
         void start() override;
@@ -26,8 +28,6 @@ namespace doraemon{
         bool is_alive() override { return service_status_ <  ServiceStatus::Stopped; }
 
         ServiceStatus get_status() override {return service_status_;}
-
-        size_t hash_code() override {return (size_t)(void*)this;}
 
     };
 

@@ -47,6 +47,7 @@ add_library(doraemon SHARED src/doraemon.cxx
             src/atomic/ref_counted_object.cxx
             src/concurrency/abstract_service.cxx
             src/concurrency/task_executor_service.cxx
+            src/concurrency/thread_pool.cxx
             src/conf/config.cxx
             src/ipc/shared_memory.cxx
             src/md5/md5.cxx

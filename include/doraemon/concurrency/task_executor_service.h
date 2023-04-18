@@ -11,7 +11,7 @@
 
 namespace doraemon{
 
-    class SingleThreadTaskExecutorService: public TaskExecutor, AbstractService{
+    class SingleThreadTaskExecutorService: public TaskExecutor, public AbstractService{
     	private:
             std::queue<std::shared_ptr<Runnable>>  tasks_;
             std::mutex queue_mtx_;
