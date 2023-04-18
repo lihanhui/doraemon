@@ -47,7 +47,7 @@ public:
     
     ///////////////////////
     
-    bool success() override { return succeeded; }
+    bool is_success() override { return succeeded; }
     std::exception_ptr cause() override { return ex; }
     
     void add_listener(std::shared_ptr<GenericFutureListener<T>> listener) override {

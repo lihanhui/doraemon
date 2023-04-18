@@ -8,6 +8,7 @@ namespace doraemon{
     	virtual void run() = 0;
     	virtual bool is_running() = 0;
         virtual bool is_alive() = 0;
+        virtual ~Runnable() {}
     };
 };
 

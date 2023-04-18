@@ -22,7 +22,7 @@ namespace doraemon{
     public:
         SimpleThreadPool(size_t count) {
             this->count_ = count;
-            for(int i = 0; i < count; ++i){
+            for(unsigned int i = 0; i < count; ++i){
                 std::shared_ptr<SingleThreadTaskExecutorService> e =  std::make_shared<SingleThreadTaskExecutorService>();
                 e->start();
                 executors_.push_back(e);

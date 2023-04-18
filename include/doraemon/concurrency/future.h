@@ -13,7 +13,7 @@ template<class T> class Future: public std::enable_shared_from_this<Future<T>> {
      * Returns {@code true} if and only if the I/O operation was completed
      * successfully.
      */
-    virtual bool success() = 0;
+    virtual bool is_success() = 0;
 
     /**
      * Returns the cause of the failed I/O operation if the I/O operation has

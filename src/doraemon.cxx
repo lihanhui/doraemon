@@ -1,3 +1,4 @@
+#include <cassert>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -21,7 +22,7 @@ class MyJsonConf: public doraemon::Jsonable{
     std::string to_json() override{
         return "";
     }
-    void from_json(const std::string & json) override {
+    void from_json([[maybe_unused]]const std::string & json) override {
     
     }
 };
@@ -36,7 +37,7 @@ public:
     }
 };
 //template std::shared_ptr<doraemon::Future<int>> doraemon::Executor::submit<int>(std::shared_ptr<doraemon::Task<int>>);
-int main(int argc, char * argv[]){
+int main([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
     doraemon::ThreadPool *tp = new doraemon::SimpleThreadPool(2);
     tp->start();
 

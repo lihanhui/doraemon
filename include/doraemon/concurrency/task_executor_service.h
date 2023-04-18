@@ -30,6 +30,14 @@ namespace doraemon{
             void run_one(std::shared_ptr<Runnable> r);
             std::shared_ptr<Runnable> get_one();
 
+        public:
+            virtual ~SingleThreadTaskExecutorService(){
+                std::lock_guard<std::mutex> lck (this->queue_mtx_);
+                while(tasks_.size() > 0){
+                    tasks_.pop();
+                }
+            }
+
     };
 };
 

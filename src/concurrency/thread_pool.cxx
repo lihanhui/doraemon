@@ -6,7 +6,7 @@
 #include "doraemon/concurrency/thread_pool.h"
 
 namespace doraemon{
-	using namespace std::chrono_literals;
+    using namespace std::chrono_literals;
     void SimpleThreadPool::run(){
     	try{
             while(this->is_alive()){
@@ -23,7 +23,7 @@ namespace doraemon{
         if(this->service_status_  >= ServiceStatus::Running) return;
         this->service_status_ = ServiceStatus::Running;
         
-        for(int i = 0; i < this->executors_.size(); ++i ){
+        for(unsigned int i = 0; i < this->executors_.size(); ++i ){
         	this->executors_[i]->start();
         }
     }
@@ -33,7 +33,7 @@ namespace doraemon{
             this->service_status_ = ServiceStatus::Paused;
         }
 
-        for(int i = 0; i < this->executors_.size(); ++i ){
+        for(unsigned int i = 0; i < this->executors_.size(); ++i ){
         	this->executors_[i]->pause();
         }
 
@@ -44,7 +44,7 @@ namespace doraemon{
             this->service_status_ = ServiceStatus::Stopped;
         }
 
-        for(int i = 0; i < this->executors_.size(); ++i ){
+        for(unsigned int i = 0; i < this->executors_.size(); ++i ){
         	this->executors_[i]->stop();
         }
     }
@@ -55,7 +55,7 @@ namespace doraemon{
             this->service_status_ = ServiceStatus::Running;
         }
 
-        for(int i = 0; i < this->executors_.size(); ++i ){
+        for(unsigned int i = 0; i < this->executors_.size(); ++i ){
         	this->executors_[i]->resume();
         }
     }
