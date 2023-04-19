@@ -26,14 +26,16 @@ class MyJsonConf: public doraemon::Jsonable{
     
     }
 };
-template<typename T=int> class MyTask: public doraemon::AbstractTask<T>{
+template<typename T> class MyTask: public doraemon::AbstractTask<T>{
+private:
+    T a_;
 public:
-    MyTask(){
+    MyTask(T a): a_(a){
         std::cout<<"constructor"<<std::endl;
     } 
     void run() override {
-        std::cout<<"run"<<std::endl;
-        this->get_promise()->success(1);
+        std::cout<<"run:"<<a_<<std::endl;
+        this->get_promise()->success(a_);
     }
 };
 //template std::shared_ptr<doraemon::Future<int>> doraemon::Executor::submit<int>(std::shared_ptr<doraemon::Task<int>>);
@@ -41,10 +43,12 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
     doraemon::ThreadPool *tp = new doraemon::SimpleThreadPool(2);
     tp->start();
 
-    std::shared_ptr<doraemon::Task<int>> t = std::make_shared<MyTask<int>>();
+    std::shared_ptr<doraemon::Task<int>> t = std::make_shared<MyTask<int>>(1);
     tp->get_executor()->submit<int>(t);
 
-    
+    std::shared_ptr<doraemon::Task<double>> t2 = std::make_shared<MyTask<double>>(1.1);
+    tp->get_executor()->submit<double>(t2);
+
     /*char s1 = doraemon::System::PathSeperator;
     doraemon::SpinLock spin_lck;
     {
