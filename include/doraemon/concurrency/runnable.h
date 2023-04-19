@@ -15,9 +15,6 @@ namespace doraemon{
         virtual ~Runnable() {}
     };
 
-    struct WeakRunnable: public Runnable{
-        virtual std::shared_ptr<WeakPromise> get_weak_promise() = 0;
-    };
 };
 
 #endif

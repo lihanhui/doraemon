@@ -14,7 +14,7 @@ namespace doraemon{
             return t->get_promise();
         }
     protected:
-        virtual void submit0(std::shared_ptr<WeakRunnable> t) = 0;
+        virtual void submit0(std::shared_ptr<WeakTask> t) = 0;
     };
 };
 

@@ -8,8 +8,8 @@
 
 namespace doraemon{
     using namespace std::chrono_literals;
-	std::shared_ptr<WeakRunnable> SingleThreadTaskExecutorService::get_one(){
-		std::shared_ptr<WeakRunnable> r = nullptr;
+	std::shared_ptr<WeakTask> SingleThreadTaskExecutorService::get_one(){
+		std::shared_ptr<WeakTask> r = nullptr;
         if(this->tasks_.size() > 0){
             r = this->tasks_.front();
             this->tasks_.pop();
@@ -17,13 +17,13 @@ namespace doraemon{
         return r;
     	
     }
-	void SingleThreadTaskExecutorService::run_one(std::shared_ptr<WeakRunnable> r){
+	void SingleThreadTaskExecutorService::run_one(std::shared_ptr<WeakTask> r){
         try{
             if( this->is_running() ){
                 if( r->is_alive() && !r->is_running()){
                     r->start();
                 }else{
-                    throw RuntimeError("the runnable task with wrong status");
+                    throw RuntimeError("the runnable task with wrong status"); // can call get_status
                 }
             }
         }catch(...){
@@ -37,7 +37,7 @@ namespace doraemon{
                     std::this_thread::sleep_for(10ms);
                     continue;
                 }
-                std::shared_ptr<WeakRunnable> r = nullptr;
+                std::shared_ptr<WeakTask> r = nullptr;
                 {
                     std::unique_lock lck(this->queue_mtx_);
                     r = get_one();
@@ -51,7 +51,7 @@ namespace doraemon{
             }
     	}
     	catch(...){
-            
+
     	}
     }
 
