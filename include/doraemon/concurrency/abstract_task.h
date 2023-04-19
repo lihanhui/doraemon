@@ -52,6 +52,10 @@ namespace doraemon{
         std::shared_ptr<Promise<T>> get_promise() override {
             return promise_;
         }
+
+        std::shared_ptr<WeakPromise> get_weak_promise() override {
+            return promise_;
+        }
     protected:
         // 
         //virtual void invoke() = 0;

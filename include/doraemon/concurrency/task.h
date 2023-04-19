@@ -15,7 +15,7 @@ namespace doraemon{
         Aborted = 16 // aborted cause some exceptions
 	};
 
-    template<typename T> struct Task : public Runnable{
+    template<typename T> struct Task : public WeakRunnable{
         virtual void cancel() = 0;
         virtual TaskStatus get_status() = 0;
 

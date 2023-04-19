@@ -13,7 +13,7 @@ namespace doraemon{
 
     class SingleThreadTaskExecutorService: public TaskExecutor, public AbstractService{
     	private:
-            std::queue<std::shared_ptr<Runnable>>  tasks_;
+            std::queue<std::shared_ptr<WeakRunnable>>  tasks_;
             std::mutex queue_mtx_;
             std::condition_variable cv_;
         public:
@@ -21,14 +21,14 @@ namespace doraemon{
         protected:
             void run() override;
         public:
-            void submit0(std::shared_ptr<Runnable> t) override{
+            void submit0(std::shared_ptr<WeakRunnable> t) override{
                 std::lock_guard<std::mutex> lck (this->queue_mtx_);
                 this->tasks_.push(t);
                 cv_.notify_all();
             }
         private:
-            void run_one(std::shared_ptr<Runnable> r);
-            std::shared_ptr<Runnable> get_one();
+            void run_one(std::shared_ptr<WeakRunnable> r);
+            std::shared_ptr<WeakRunnable> get_one();
 
         public:
             virtual ~SingleThreadTaskExecutorService(){
