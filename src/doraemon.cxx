@@ -44,10 +44,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
     tp->start();
 
     std::shared_ptr<doraemon::Task<int>> t = std::make_shared<MyTask<int>>(1);
-    tp->get_executor()->submit<int>(t);
+    tp->submit<int>(t);
 
     std::shared_ptr<doraemon::Task<double>> t2 = std::make_shared<MyTask<double>>(1.1);
-    tp->get_executor()->submit<double>(t2);
+    tp->submit<double>(t2);
 
     /*char s1 = doraemon::System::PathSeperator;
     doraemon::SpinLock spin_lck;

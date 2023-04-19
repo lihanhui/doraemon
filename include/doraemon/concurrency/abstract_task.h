@@ -8,6 +8,7 @@
 
 #include "doraemon/concurrency/task.h"
 #include "doraemon/concurrency/default_promise.h"
+#include "doraemon/random/random_util.h"
 #include "doraemon/runtime/runtime_error.h"
 
 namespace doraemon{
@@ -47,7 +48,7 @@ namespace doraemon{
         bool is_alive() override { return task_status_ <  TaskStatus::Cancelled; }
 
         TaskStatus get_status() override {return task_status_;}
-        size_t hash_code() override {return (size_t)(void*)this;}
+        size_t hash_code() override {return (size_t)(void*)this;} // TODO: wrong hashcode implementation, fix it later
 
         std::shared_ptr<Promise<T>> get_promise() override {
             return promise_;

@@ -10,7 +10,7 @@
 
 namespace doraemon{
 
-    struct ThreadPool: public AbstractService{
+    struct ThreadPool: public TaskExecutor, public AbstractService{
     	virtual std::shared_ptr<Executor> get_executor() = 0;
 
     };
@@ -31,6 +31,10 @@ namespace doraemon{
         std::shared_ptr<Executor> get_executor() override{
             int r = RandomUtil::random(0, 10 * this->count_);
             return this->executors_[r % this->count_];
+        }
+    public:
+        void submit0(std::shared_ptr<WeakTask> t) override{
+            this->executors_[t->hash_code() % count_]->submit0(t); 
         }
         void start() override;
         void pause() override;

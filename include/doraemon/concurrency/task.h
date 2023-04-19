@@ -17,11 +17,11 @@ namespace doraemon{
     struct WeakTask: public Runnable{
         virtual std::shared_ptr<WeakPromise> get_weak_promise() = 0;
         virtual TaskStatus get_status() = 0;
+        virtual void cancel() = 0;
+        virtual size_t hash_code() = 0;
     };
     template<typename T> struct Task : public WeakTask{
-        virtual void cancel() = 0;
         virtual std::shared_ptr<Promise<T>> get_promise() = 0;
-        virtual size_t hash_code() = 0;
     };
 
 };
