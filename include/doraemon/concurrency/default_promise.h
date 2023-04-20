@@ -64,7 +64,7 @@ public:
     
     //////////////////////
     bool done() override { return this->get_done(); }
-    bool success(const T v) override{
+    bool success(const T& v) override{
         std::lock_guard<std::mutex> guard(locker);
         if(this->get_done()) return false;
          
@@ -76,7 +76,19 @@ public:
     	}
         return true;
     }
-    bool try_success(const T v) override{
+    bool success(T&& v) override{
+        std::lock_guard<std::mutex> guard(locker);
+        if(this->get_done()) return false;
+         
+        this->set_value(std::move(v));
+        this->done_ = true;
+        this->succeeded = true;
+        for(std::shared_ptr<GenericFutureListener<T>> &listener: listeners){
+            listener->operationComplete(this->shared_from_this());
+        }
+        return true;
+    }
+    bool try_success(const T& v) override{
     	std::lock_guard<std::mutex> guard(locker);
     	if(this->get_done()) return false;
     	
@@ -89,7 +101,19 @@ public:
     	}
         return true;
     }
-    
+    bool try_success(T&& v) override{
+        std::lock_guard<std::mutex> guard(locker);
+        if(this->get_done()) return false;
+        
+        this->set_value(std::move(v));
+        this->done_ = true;
+        this->succeeded = true;
+        
+        for(std::shared_ptr<GenericFutureListener<T>> &listener: listeners){
+            listener->operationComplete(this->shared_from_this());
+        }
+        return true;
+    }
     bool failure(std::exception_ptr cause) override{
     	std::lock_guard<std::mutex> guard(locker);
     	if(this->get_done()) return false;

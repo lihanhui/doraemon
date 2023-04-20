@@ -24,5 +24,5 @@ public:
 };
 
 }; // namespace doraemon
-//typedef GenericFutureListener<typename T> FutureListener<typename T>;
+//typedef GenericFutureListener<typename T>;
 #endif

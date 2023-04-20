@@ -36,7 +36,8 @@ public:
      *
      * If it is success or failed already it will throw an {@link IllegalStateException}.
      */
-    virtual bool success(const T v) = 0;
+    virtual bool success(const T& v) = 0;
+    virtual bool success(T&& v) = 0;
 
     /**
      * Marks this future as a success and notifies all
@@ -46,7 +47,8 @@ public:
      *         a success. Otherwise {@code false} because this future is
      *         already marked as either a success or a failure.
      */
-    virtual bool try_success(const T v) = 0;
+    virtual bool try_success(const T& v) = 0;
+    virtual bool try_success(T&& v) = 0;
 
     virtual bool done() = 0;
 };

@@ -1,6 +1,6 @@
 #include "doraemon/net/net.h"
 
-const int NetUtil::VALUE = 0x11223344;
+static int VALUE = 0x11223344;
 
 
 bool NetUtil::is_big_endian() { return *(unsigned char*)(&VALUE) == (unsigned char)(0x11); }

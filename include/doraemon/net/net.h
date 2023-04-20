@@ -9,9 +9,6 @@ enum class ByteOrder{
 
 class NetUtil
 {
-private:
-	static const int VALUE;
-
 public:
     static bool is_big_endian() ;
     static bool is_little_endian() ;
