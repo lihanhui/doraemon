@@ -35,8 +35,8 @@ add_library(doraemon SHARED doraemon.cxx
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)
 target_link_libraries(doraemon  ${EXTRA_LIBS})
 
-add_executable(doraemon-tmp doraemon.cxx)
-target_link_libraries(doraemon-tmp  ${EXTRA_LIBS} doraemon)
+#add_executable(doraemon-tmp doraemon.cxx)
+#target_link_libraries(doraemon-tmp  ${EXTRA_LIBS} doraemon)
 
 # add the install targets
 install (TARGETS doraemon DESTINATION lib

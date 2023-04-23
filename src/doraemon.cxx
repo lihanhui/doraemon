@@ -39,7 +39,7 @@ public:
     }
 };
 //template std::shared_ptr<doraemon::Future<int>> doraemon::Executor::submit<int>(std::shared_ptr<doraemon::Task<int>>);
-int main([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
+int main2([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
     doraemon::ThreadPool *tp = new doraemon::SimpleThreadPool(2);
     tp->start();
 
