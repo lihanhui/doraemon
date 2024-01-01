@@ -19,7 +19,8 @@ ELSE ()
 ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
 #####################################
-add_library(doraemon SHARED doraemon.cxx 
+add_library(doraemon SHARED doraemon.cxx
+            buffer/buffer.cxx 
             atomic/atomic_counter.cxx
             atomic/ref_counted_object.cxx
             concurrency/abstract_service.cxx
