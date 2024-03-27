@@ -1,20 +1,19 @@
-#ifndef DORAEMON_LOADER_LOADER_H 
-#define DORAEMON_LOADER_LOADER_H 
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_LOADER_LOADER_H_
+#define INCLUDE_DORAEMON_LOADER_LOADER_H_
 
 #include <string>
 
-namespace doraemon{
+namespace doraemon {
 
 using Handle = void*;
 
-class Loader{
-
-
-public:
-    static Handle load(std::string& filename);
+class Loader {
+ public:
+    static Handle load(const std::string& filename);
     static void unload(Handle h);
 };
 
-};
+};  // namespace doraemon
 
-#endif
+#endif  // INCLUDE_DORAEMON_LOADER_LOADER_H_

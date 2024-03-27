@@ -1,7 +1,9 @@
-#ifndef DORAEMON_CONCURRENCY_FUTURE_H
-#define DORAEMON_CONCURRENCY_FUTURE_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_CONCURRENCY_FUTURE_H_
+#define INCLUDE_DORAEMON_CONCURRENCY_FUTURE_H_
 
 #include <exception>
+#include <memory>
 
 #include "doraemon/concurrency/generic_future_listener.h"
 namespace doraemon
@@ -31,7 +33,8 @@ template<class T> class Future: public std::enable_shared_from_this<Future<T>> {
      * {@linkplain #isDone() done}.  If this future is already
      * completed, the specified listener is notified immediately.
      */
-    virtual void add_listener(std::shared_ptr<GenericFutureListener<T>> listener) = 0;
+    virtual void add_listener(
+        std::shared_ptr<GenericFutureListener<T>> listener) = 0;
 
     /**
      * Return the result without blocking. If the future is not done yet this will return {@code null}.
@@ -40,8 +43,7 @@ template<class T> class Future: public std::enable_shared_from_this<Future<T>> {
      * if the future is really done with {@link #isDone()} and not relay on the returned {@code null} value.
      */
     virtual T get() = 0;
-
 };
 
-}; // namespace doraemon
-#endif
+};  // namespace doraemon
+#endif  // INCLUDE_DORAEMON_CONCURRENCY_FUTURE_H_

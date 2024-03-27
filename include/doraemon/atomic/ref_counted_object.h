@@ -1,5 +1,6 @@
-#ifndef DORAEMON_IPC_REFCOUNTEDOBJECT_H
-#define DORAEMON_IPC_REFCOUNTEDOBJECT_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_ATOMIC_REF_COUNTED_OBJECT_H_
+#define INCLUDE_DORAEMON_ATOMIC_REF_COUNTED_OBJECT_H_
 
 #include <stdexcept>
 
@@ -9,69 +10,66 @@ namespace doraemon {
 
 
 class RefCountedObject
-	/// A base class for objects that employ
-	/// reference counting based garbage collection.
-	///
-	/// Reference-counted objects inhibit construction
-	/// by copying and assignment.
+    /// A base class for objects that employ
+    /// reference counting based garbage collection.
+    ///
+    /// Reference-counted objects inhibit construction
+    /// by copying and assignment.
 {
-public:
-	RefCountedObject();
-		/// Creates the RefCountedObject.
-		/// The initial reference count is one.
+ public:
+    RefCountedObject();
+        /// Creates the RefCountedObject.
+        /// The initial reference count is one.
 
-	void duplicate() const;
-		/// Increments the object's reference count.
+    void duplicate() const;
+        /// Increments the object's reference count.
 
-	void release() const noexcept;
-		/// Decrements the object's reference count
-		/// and deletes the object if the count
-		/// reaches zero.
+    void release() const noexcept;
+        /// Decrements the object's reference count
+        /// and deletes the object if the count
+        /// reaches zero.
 
-	int referenceCount() const;
-		/// Returns the reference count.
+    int reference_count() const;
+        /// Returns the reference count.
 
-protected:
-	virtual ~RefCountedObject();
-		/// Destroys the RefCountedObject.
+ protected:
+    virtual ~RefCountedObject();
+        /// Destroys the RefCountedObject.
 
-private:
-	RefCountedObject(const RefCountedObject&);
-	RefCountedObject& operator = (const RefCountedObject&);
+ private:
+    RefCountedObject(const RefCountedObject&);
+    RefCountedObject& operator=(const RefCountedObject&);
 
-	mutable AtomicCounter _counter;
+    mutable AtomicCounter counter_;
 };
 
 
 //
 // inlines
 //
-inline int RefCountedObject::referenceCount() const
+inline int RefCountedObject::reference_count() const
 {
-	return _counter.value();
+    return counter_.value();
 }
-
 
 inline void RefCountedObject::duplicate() const
 {
-	++_counter;
+    ++counter_;
 }
-
 
 inline void RefCountedObject::release() const noexcept
 {
-	try
-	{
-		if (--_counter == 0) delete this;
-	}
-	catch (...)
-	{
-		throw std::runtime_error("");
-	}
+    try
+    {
+        if (--counter_ == 0)
+            delete this;
+    }
+    catch (...)
+    {
+        throw std::runtime_error("");
+    }
 }
 
+}  // namespace doraemon
 
-} // namespace doraemon
-
-
-#endif
+#endif  // INCLUDE_DORAEMON_ATOMIC_REF_COUNTED_OBJECT_H_

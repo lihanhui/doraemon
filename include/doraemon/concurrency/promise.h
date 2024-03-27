@@ -1,5 +1,6 @@
-#ifndef DORAEMON_CONCURRENCY_PROMISE_H
-#define DORAEMON_CONCURRENCY_PROMISE_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_CONCURRENCY_PROMISE_H_
+#define INCLUDE_DORAEMON_CONCURRENCY_PROMISE_H_
 
 #include <future>
 
@@ -28,8 +29,9 @@ struct WeakPromise {
     virtual bool try_failure(std::exception_ptr cause) = 0;
 };
 
-template <typename T> class Promise: public WeakPromise, public Future<T>, public std::promise<T>{
-public:
+template <typename T> class Promise:
+public WeakPromise, public Future<T>, public std::promise<T> {
+ public:
      /**
      * Marks this future as a success and notifies all
      * listeners.
@@ -53,5 +55,5 @@ public:
     virtual bool done() = 0;
 };
 
-}; // namespace aquaman
-#endif
+};  // namespace doraemon
+#endif  // INCLUDE_DORAEMON_CONCURRENCY_PROMISE_H_

@@ -1,5 +1,8 @@
+// Copyright (c) 2019 Hanhui LI
 #include "doraemon/conf/config.h"
 
-using namespace doraemon;
+namespace doraemon{
 
 Config * Config::config_ = nullptr;
+
+};  // namespace doraemon

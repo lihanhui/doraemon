@@ -1,27 +1,28 @@
-#ifndef DORAEMON_LOCK_SPIN_LOCK_H
-#define DORAEMON_LOCK_SPIN_LOCK_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_LOCK_SPIN_LOCK_H_
+#define INCLUDE_DORAEMON_LOCK_SPIN_LOCK_H_
 
 #include <atomic>
 
 #include "doraemon/lock/lock.h"
 
-namespace doraemon{
+namespace doraemon {
 
 class SpinLock : public Lockable {
-private:
+ private:
     std::atomic_flag lck = ATOMIC_FLAG_INIT;
 
-public:
-    virtual void lock() override {
-        while (lck.test_and_set (std::memory_order_acquire)){
+ public:
+    void lock() override {
+        while (lck.test_and_set(std::memory_order_acquire)) {
         }
     }
 
-    virtual void unlock () override {
-        lck.clear (std::memory_order_release);
+    void unlock() override {
+        lck.clear(std::memory_order_release);
     }
 };
 
-};
+};  // namespace doraemon
 
-#endif
+#endif  // INCLUDE_DORAEMON_LOCK_SPIN_LOCK_H_

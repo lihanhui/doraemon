@@ -1,5 +1,6 @@
-#ifndef DORAEMON_CONF_CONFIG_H
-#define DORAEMON_CONF_CONFIG_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_CONF_CONFIG_H_
+#define INCLUDE_DORAEMON_CONF_CONFIG_H_
 
 #include <string>
 
@@ -8,17 +9,18 @@
 namespace doraemon {
 
 struct Config final{
-private:
+ private:
     std::string conf_path = "./etc/conf";
 
-private:
-    static Config * config_ ;
-    
-    Config(){}
-    Config(const std::string & conf_path) {
+ private:
+    static Config * config_;
+
+    Config() {}
+    explicit Config(const std::string & conf_path) {
         this->conf_path = conf_path;
     }
-public:
+
+ public:
     static Config * get_config() {
         return config_;
     }
@@ -34,7 +36,6 @@ public:
     }
 };
 
+};  // namespace doraemon
 
-};
-
-#endif
+#endif  // INCLUDE_DORAEMON_CONF_CONFIG_H_

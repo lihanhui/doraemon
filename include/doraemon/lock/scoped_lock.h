@@ -1,26 +1,29 @@
-#ifndef DORAEMON_LOCK_SCOPED_LOCK_H
-#define DORAEMON_LOCK_SCOPED_LOCK_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_LOCK_SCOPED_LOCK_H_
+#define INCLUDE_DORAEMON_LOCK_SCOPED_LOCK_H_
 
 #include <atomic>
 
 #include "doraemon/lock/lock.h"
 
-namespace doraemon{
+namespace doraemon {
 
-class ScopedLock{
-private:
+class ScopedLock {
+ private:
     Lockable* lck;
 
-private:
+ private:
     ScopedLock() {}
-public:
-    ScopedLock(Lockable &lck) { 
+
+ public:
+    explicit ScopedLock(Lockable &lck) {
         this->lck = &lck;
-        this->lck->lock(); 
+        this->lck->lock();
     }
+
     ~ScopedLock() { this->lck->unlock(); }
 };
 
-};
+};  // namespace doraemon
 
-#endif
+#endif  // INCLUDE_DORAEMON_LOCK_SCOPED_LOCK_H_

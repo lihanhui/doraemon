@@ -1,5 +1,6 @@
-#ifndef DORAEMON_CONCURRENCY_TASK_EXECUTOR_H
-#define DORAEMON_CONCURRENCY_TASK_EXECUTOR_H
+// Copyright (c) 2019 Hanhui LI
+#ifndef INCLUDE_DORAEMON_CONCURRENCY_TASK_EXECUTOR_H_
+#define INCLUDE_DORAEMON_CONCURRENCY_TASK_EXECUTOR_H_
 
 #include <memory>
 
@@ -8,9 +9,9 @@
 
 namespace doraemon{
 
-    struct TaskExecutor: public Executor{
-    	
-    };
+struct TaskExecutor: public Executor{
 };
 
-#endif
+};  // namespace doraemon
+
+#endif  // INCLUDE_DORAEMON_CONCURRENCY_TASK_EXECUTOR_H_
