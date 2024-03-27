@@ -53,7 +53,7 @@ template<typename T> class AbstractTask : public Task<T>{
     TaskStatus get_status() override { return task_status_; }
 
     size_t hash_code() override {
-        return static_cast<size_t>(this);
+        return (size_t)((void*)this);
     }  // TODO: (Li Hanhui) wrong hashcode implementation, fix it later
 
     std::shared_ptr<Promise<T>> get_promise() override {

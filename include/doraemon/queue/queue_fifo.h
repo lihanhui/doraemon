@@ -40,7 +40,7 @@ template<typename T> class QueueFifo{
             T* data = head->_data;
             if (head_->_next)
             {  // more than one node
-                head_ = _head->_next;
+                head_ = head_->_next;
             } else {  // only one node
                 head_ = tail_ = nullptr;
             }
