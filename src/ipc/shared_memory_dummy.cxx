@@ -10,4 +10,4 @@ SharedMemoryImpl::~SharedMemoryImpl()
 {
 }
 
-} // namespace 
+}  // namespace doraemon
