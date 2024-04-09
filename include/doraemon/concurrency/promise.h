@@ -2,7 +2,7 @@
 #ifndef INCLUDE_DORAEMON_CONCURRENCY_PROMISE_H_
 #define INCLUDE_DORAEMON_CONCURRENCY_PROMISE_H_
 
-#include <future>
+#include <future> //NOLINT [build/c++11]
 
 #include "doraemon/concurrency/future.h"
 

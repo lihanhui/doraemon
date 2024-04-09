@@ -41,7 +41,7 @@ class SharedMemory
         // is actually honored is, however, up to the system. Windows platform
         // will generally ignore the hint.
         // If server is set to true, the shared memory region will be unlinked
-        // by calling shm_unlink() (on POSIX platforms) when 
+        // by calling shm_unlink() (on POSIX platforms) when
         // the SharedMemory object is destroyed.
         // The server parameter is ignored on Windows platforms.
 

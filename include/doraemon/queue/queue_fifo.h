@@ -2,7 +2,7 @@
 #ifndef INCLUDE_DORAEMON_QUEUE_QUEUE_FIFO_H_
 #define INCLUDE_DORAEMON_QUEUE_QUEUE_FIFO_H_
 
-#include <mutex>
+#include <mutex> //NOLINT [build/c++11]
 
 namespace doraemon {
 template<typename T> struct QueueNode {

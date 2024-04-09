@@ -1,6 +1,8 @@
 #ifndef INCLUDE_DORAEMON_IPC_SHARED_MEMORY_WIN32_H_
 #define INCLUDE_DORAEMON_IPC_SHARED_MEMORY_WIN32_H_
 
+#include <string>
+
 #include "doraemon/ipc/shared_memory.h"
 #include "doraemon/atomic/ref_counted_object.h"
 

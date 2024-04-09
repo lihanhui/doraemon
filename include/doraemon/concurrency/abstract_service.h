@@ -2,9 +2,9 @@
 #ifndef INCLUDE_DORAEMON_CONCURRENCY_ABSTRACT_SERVICE_H_
 #define INCLUDE_DORAEMON_CONCURRENCY_ABSTRACT_SERVICE_H_
 
-#include <condition_variable>
-#include <mutex>
-#include <thread>
+#include <condition_variable> //NOLINT [build/c++11]
+#include <mutex>              //NOLINT [build/c++11]
+#include <thread>             //NOLINT [build/c++11]
 
 #include "doraemon/concurrency/service.h"
 

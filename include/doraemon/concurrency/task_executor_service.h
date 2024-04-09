@@ -2,9 +2,9 @@
 #ifndef INCLUDE_DORAEMON_CONCURRENCY_TASK_EXECUTOR_SERVICE_H_
 #define INCLUDE_DORAEMON_CONCURRENCY_TASK_EXECUTOR_SERVICE_H_
 
-#include <condition_variable>
+#include <condition_variable> //NOLINT [build/c++11]
 #include <memory>
-#include <mutex>
+#include <mutex> //NOLINT [build/c++11]
 #include <queue>
 
 #include "doraemon/concurrency/abstract_service.h"

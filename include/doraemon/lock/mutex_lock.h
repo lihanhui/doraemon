@@ -2,7 +2,7 @@
 #ifndef INCLUDE_DORAEMON_LOCK_MUTEX_LOCK_H_
 #define INCLUDE_DORAEMON_LOCK_MUTEX_LOCK_H_
 
-#include <mutex>
+#include <mutex> //NOLINT [build/c++11]
 
 #include "doraemon/lock/lock.h"
 

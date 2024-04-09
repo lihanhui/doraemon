@@ -4,8 +4,8 @@
 
 #include <list>
 #include <memory>
-#include <mutex>
-#include <thread>
+#include <mutex> //NOLINT [build/c++11]
+#include <thread> //NOLINT [build/c++11]
 #include <utility>
 
 #include "doraemon/concurrency/future.h"

@@ -16,7 +16,7 @@ class ScopedLock {
     ScopedLock() {}
 
  public:
-    explicit ScopedLock(Lockable &lck) {
+    explicit ScopedLock(const Lockable &lck) {
         this->lck = &lck;
         this->lck->lock();
     }
