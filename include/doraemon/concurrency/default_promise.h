@@ -15,9 +15,10 @@
 namespace doraemon
 {
 
-template <typename T> class DefaultPromise: public Promise<T> {
+template <typename T> class DefaultPromise: public Promise<T>
+{
  private:
-    std::mutex locker;
+    std::mutex locker_;
     std::atomic_bool done_;
     std::atomic_bool succeeded;
     std::exception_ptr ex;
@@ -26,7 +27,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
 
  private:
     std::mutex& get_locker() {
-        return locker;
+        return locker_;
     }
 
     bool get_done() {
@@ -58,7 +59,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
 
     void add_listener(
         std::shared_ptr<GenericFutureListener<T>> listener) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (get_done()) {
             listener->operationComplete(this->shared_from_this());
         }
@@ -72,7 +73,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
     //////////////////////
     bool done() override { return this->get_done(); }
     bool success(const T& v) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->set_value(v);
@@ -84,7 +85,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
         return true;
     }
     bool success(T&& v) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->set_value(std::move(v));
@@ -97,7 +98,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
     }
 
     bool try_success(const T& v) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->set_value(v);
@@ -111,7 +112,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
     }
 
     bool try_success(T&& v) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->set_value(std::move(v));
@@ -125,7 +126,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
     }
 
     bool failure(std::exception_ptr cause) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->done_ = true;
@@ -140,7 +141,7 @@ template <typename T> class DefaultPromise: public Promise<T> {
     }
 
     bool try_failure(std::exception_ptr cause) override {
-        std::lock_guard<std::mutex> guard(locker);
+        std::lock_guard<std::mutex> guard(locker_);
         if (this->get_done()) return false;
 
         this->done_ = true;

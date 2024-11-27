@@ -8,7 +8,8 @@
 #include "doraemon/concurrency/promise.h"
 
 namespace doraemon{
-enum class TaskStatus {
+enum class TaskStatus
+{
     Initialized = 1,
     Running = 2,
     Cancelled = 4,
@@ -16,14 +17,16 @@ enum class TaskStatus {
     Aborted = 16  // aborted cause some exceptions
 };
 
-struct WeakTask: public Runnable {
+struct WeakTask: public Runnable
+{
     virtual std::shared_ptr<WeakPromise> get_weak_promise() = 0;
     virtual TaskStatus get_status() = 0;
     virtual void cancel() = 0;
     virtual size_t hash_code() = 0;
 };
 
-template<typename T> struct Task : public WeakTask {
+template<typename T> struct Task : public WeakTask
+{
     virtual std::shared_ptr<Promise<T>> get_promise() = 0;
 };
 

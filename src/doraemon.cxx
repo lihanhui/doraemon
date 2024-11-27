@@ -1,3 +1,4 @@
+// Copyright (c) 2019 Hanhui LI
 #include <cassert>
 #include <iostream>
 #include <memory>
@@ -19,7 +20,7 @@
 using namespace doraemon;
 
 class MyJsonConf: public doraemon::Jsonable{
-    std::string to_json() override{
+    std::string to_json() override {
         return "";
     }
     void from_json([[maybe_unused]]const std::string & json) override {

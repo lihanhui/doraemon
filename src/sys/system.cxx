@@ -3,8 +3,9 @@
 
 #include <filesystem>
 
-namespace doraemon{
+namespace doraemon
+{
 
-char System::PathSeperator = std::filesystem::path::preferred_separator;
+    char System::PathSeperator = std::filesystem::path::preferred_separator;
 
 };  // namespace doraemon

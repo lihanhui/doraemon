@@ -5,7 +5,8 @@
 #include "doraemon/concurrency/runnable.h"
 
 namespace doraemon{
-enum class ServiceStatus{
+enum class ServiceStatus
+{
     Initialized = 1,
     Running = 2,
     Paused  = 4,
@@ -13,7 +14,8 @@ enum class ServiceStatus{
     Aborted = 16  // aborted cause some exceptions
 };
 
-struct Service : public Runnable{
+struct Service : public Runnable
+{
     virtual void pause() = 0;
     virtual void resume() = 0;
     virtual void stop() = 0;

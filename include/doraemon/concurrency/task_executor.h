@@ -9,7 +9,8 @@
 
 namespace doraemon{
 
-struct TaskExecutor: public Executor{
+struct TaskExecutor: public Executor
+{
 };
 
 };  // namespace doraemon

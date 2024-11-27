@@ -9,9 +9,10 @@
 namespace doraemon
 {
 
-template<class T> class Future: public std::enable_shared_from_this<Future<T>> {
+template<class T> class Future: public std::enable_shared_from_this<Future<T>>
+{
  public:
- /**
+    /**
      * Returns {@code true} if and only if the I/O operation was completed
      * successfully.
      */

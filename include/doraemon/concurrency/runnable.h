@@ -8,7 +8,8 @@
 
 namespace doraemon{
 
-struct Runnable{
+struct Runnable
+{
     virtual void start() = 0;
     virtual void run() = 0;
     virtual bool is_running() = 0;

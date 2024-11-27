@@ -8,8 +8,8 @@
 
 namespace doraemon
 {
-
-struct WeakPromise {
+struct WeakPromise
+{
      /**
      * Marks this future as a failure and notifies all
      * listeners.
@@ -30,7 +30,8 @@ struct WeakPromise {
 };
 
 template <typename T> class Promise:
-public WeakPromise, public Future<T>, public std::promise<T> {
+public WeakPromise, public Future<T>, public std::promise<T>
+{
  public:
      /**
      * Marks this future as a success and notifies all

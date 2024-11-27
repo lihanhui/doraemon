@@ -14,16 +14,19 @@ namespace doraemon
 template<class T> class Future;
 
 template <typename T, typename F = Future<T>> class GenericFutureListener:
-public EventListener {
+public EventListener
+{
  private:
     std::function<void(const std::shared_ptr<F> future)> callable;
 
  public:
     GenericFutureListener(
-        std::function<void(const std::shared_ptr<F> future)> callable) {
+        std::function<void(const std::shared_ptr<F> future)> callable)
+    {
         this->callable = callable;
     }
-    void operationComplete(const std::shared_ptr<F> future) {
+    void operationComplete(const std::shared_ptr<F> future)
+    {
         callable(future);
     }
 };

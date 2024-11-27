@@ -5,7 +5,7 @@
 #include <condition_variable> //NOLINT [build/c++11]
 #include <memory>             //NOLINT [build/c++11]
 #include <mutex>              //NOLINT [build/c++11]
-#include <thread> //NOLINT [build/c++11]
+#include <thread>             //NOLINT [build/c++11]
 
 #include "doraemon/concurrency/task.h"
 #include "doraemon/concurrency/default_promise.h"

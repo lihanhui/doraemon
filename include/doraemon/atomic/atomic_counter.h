@@ -4,7 +4,8 @@
 
 #include <atomic>
 
-namespace doraemon {
+namespace doraemon 
+{
 class AtomicCounter
 {
     /// This class implements a simple counter, which

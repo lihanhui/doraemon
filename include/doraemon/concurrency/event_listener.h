@@ -6,7 +6,8 @@
 namespace doraemon
 {
 
-class EventListener {
+class EventListener
+{
 };
 
 };  // namespace doraemon

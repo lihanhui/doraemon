@@ -12,18 +12,21 @@
 
 namespace doraemon{
 
-struct ThreadPool: public TaskExecutor, public AbstractService {
+struct ThreadPool: public TaskExecutor, public AbstractService
+{
     virtual std::shared_ptr<Executor> get_executor() = 0;
 };
 
-class SimpleThreadPool: public ThreadPool {
+class SimpleThreadPool: public ThreadPool
+{
  private:
     size_t count_;
     std::vector<std::shared_ptr<SingleThreadTaskExecutorService>>
         executors_;
 
  public:
-    explicit SimpleThreadPool(size_t count) {
+    explicit SimpleThreadPool(size_t count)
+    {
         this->count_ = count;
         for (unsigned int i = 0; i < count; ++i) {
             std::shared_ptr<SingleThreadTaskExecutorService> e
@@ -33,13 +36,15 @@ class SimpleThreadPool: public ThreadPool {
         }
     }
 
-    std::shared_ptr<Executor> get_executor() override {
+    std::shared_ptr<Executor> get_executor() override
+    {
         int r = RandomUtil::random(0, 10 * this->count_);
         return this->executors_[r % this->count_];
     }
 
  public:
-    void submit0(std::shared_ptr<WeakTask> t) override {
+    void submit0(std::shared_ptr<WeakTask> t) override
+    {
         this->executors_[t->hash_code() % count_]->submit0(t);
     }
     void start() override;
