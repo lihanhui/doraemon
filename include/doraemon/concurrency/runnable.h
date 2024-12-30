@@ -5,10 +5,11 @@
 #include <memory>
 
 #include "doraemon/concurrency/promise.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 
-struct Runnable
+struct D_CLASS_EXPORT Runnable
 {
     virtual void start() = 0;
     virtual void run() = 0;

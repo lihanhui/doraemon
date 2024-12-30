@@ -6,6 +6,8 @@
 #include <memory>
 
 #include "doraemon/concurrency/generic_future_listener.h"
+#include "doraemon/export/export_def.h"
+
 namespace doraemon
 {
 

@@ -11,6 +11,7 @@
 #include "doraemon/concurrency/future.h"
 #include "doraemon/concurrency/generic_future_listener.h"
 #include "doraemon/concurrency/promise.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon
 {

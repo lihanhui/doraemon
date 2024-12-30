@@ -8,6 +8,7 @@
 #include "doraemon/concurrency/executor.h"
 #include "doraemon/concurrency/runnable.h"
 #include "doraemon/concurrency/task_executor_service.h"
+#include "doraemon/export/export_def.h"
 #include "doraemon/random/random_util.h"
 
 namespace doraemon{

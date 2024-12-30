@@ -4,12 +4,12 @@
 
 #include <stdexcept>
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/atomic/atomic_counter.h"
 
-namespace doraemon {
+    namespace doraemon {
 
-
-class RefCountedObject
+class D_CLASS_EXPORT RefCountedObject
     /// A base class for objects that employ
     /// reference counting based garbage collection.
     ///

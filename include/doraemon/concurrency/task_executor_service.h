@@ -9,6 +9,7 @@
 
 #include "doraemon/concurrency/abstract_service.h"
 #include "doraemon/concurrency/task_executor.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon
 {

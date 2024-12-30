@@ -4,9 +4,11 @@
 
 #include <atomic>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon 
 {
-class AtomicCounter
+class D_CLASS_EXPORT AtomicCounter
 {
     /// This class implements a simple counter, which
     /// provides atomic operations that are safe to

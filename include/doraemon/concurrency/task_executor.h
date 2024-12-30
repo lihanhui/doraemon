@@ -6,6 +6,7 @@
 
 #include "doraemon/concurrency/executor.h"
 #include "doraemon/concurrency/runnable.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 

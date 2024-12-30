@@ -3,11 +3,16 @@
 #define DORAEMON_BASE64_BASE64_H
 
 #include <string>
-namespace doraemon{
 
-struct Base64 {
-    static std::string encode(unsigned char const *, unsigned int len);
-    static std::string decode(std::string const &s);
-};
+#include "doraemon/export/export_def.h"
+
+    namespace doraemon
+{
+
+    struct D_CLASS_EXPORT Base64
+    {
+        static std::string encode(unsigned char const *, unsigned int len);
+        static std::string decode(std::string const &s);
+    };
 };
 #endif /* BASE64_H_C0CE2A47_D10E_42C9_A27C_C883944E704A */

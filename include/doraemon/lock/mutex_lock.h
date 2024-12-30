@@ -4,23 +4,27 @@
 
 #include <mutex> //NOLINT [build/c++11]
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/lock/lock.h"
 
 namespace doraemon {
 
-class MutexLock : public Lockable {
- private:
-    std::mutex lck_;
+    class D_CLASS_EXPORT MutexLock : public Lockable
+    {
+    private:
+        std::mutex lck_;
 
- public:
-    void lock() override {
-        lck_.lock();
-    }
+    public:
+        void lock() override
+        {
+            lck_.lock();
+        }
 
-    void unlock() override {
-        lck_.unlock();
-    }
-};
+        void unlock() override
+        {
+            lck_.unlock();
+        }
+    };
 
 };  // namespace doraemon
 

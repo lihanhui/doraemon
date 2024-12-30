@@ -9,6 +9,7 @@
 
 #include "doraemon/concurrency/task.h"
 #include "doraemon/concurrency/default_promise.h"
+#include "doraemon/export/export_def.h"
 #include "doraemon/random/random_util.h"
 #include "doraemon/runtime/runtime_error.h"
 

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
 
 /* MD5
@@ -40,7 +42,8 @@ documentation and/or software.
 link: http://www.zedwood.com/article/cpp-md5-function 
 */
 
-struct Md5 {
+struct D_CLASS_EXPORT Md5
+{
     static std::string digest(const std::string & input);
     typedef unsigned int size_type; // must be 32bit
  
@@ -78,7 +81,6 @@ private:
     static inline void GG(uint4 &a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac);
     static inline void HH(uint4 &a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac);
     static inline void II(uint4 &a, uint4 b, uint4 c, uint4 d, uint4 x, uint4 s, uint4 ac);
-
 };
 };
 #endif

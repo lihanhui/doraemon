@@ -7,6 +7,7 @@
 
 #include "doraemon/concurrency/event_listener.h"
 #include "doraemon/concurrency/future.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon
 {

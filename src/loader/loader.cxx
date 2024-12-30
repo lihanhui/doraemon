@@ -8,12 +8,12 @@ namespace doraemon {
 
 Handle Loader::load(const std::string& filename)
 {
-    return dlopen(filename.c_str(), RTLD_LAZY);
+    return reinterpret_cast<Handle>(dlopen(filename.c_str(), RTLD_LAZY));
 }
 
 void Loader::unload(Handle h)
 {
-    dlclose(h);
+    dlclose(reinterpret_cast<void*>(h));
 }
 
 };  // namespace doraemon

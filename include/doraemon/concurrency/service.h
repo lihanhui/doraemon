@@ -3,6 +3,7 @@
 #define INCLUDE_DORAEMON_CONCURRENCY_SERVICE_H_
 
 #include "doraemon/concurrency/runnable.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 enum class ServiceStatus

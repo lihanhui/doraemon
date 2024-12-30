@@ -3,12 +3,13 @@
 
 #include <string>
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/ipc/shared_memory.h"
 #include "doraemon/atomic/ref_counted_object.h"
 
 namespace doraemon {
 
-class SharedMemoryImpl: public RefCountedObject
+    class D_CLASS_EXPORT SharedMemoryImpl : public RefCountedObject
     /// Shared memory implementation for POSIX platforms.
 {
 public:

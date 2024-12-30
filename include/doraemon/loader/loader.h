@@ -4,12 +4,15 @@
 
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
 
-using Handle = void*;
+//using Handle = void*;
 
-class Loader {
- public:
+class D_CLASS_EXPORT Loader
+{
+public:
     static Handle load(const std::string& filename);
     static void unload(Handle h);
 };

@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 #ifdef _WIN32
 
 using nchar = wchar_t;

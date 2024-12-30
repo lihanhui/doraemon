@@ -6,6 +6,7 @@
 
 #include "doraemon/concurrency/future.h"
 #include "doraemon/concurrency/task.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 

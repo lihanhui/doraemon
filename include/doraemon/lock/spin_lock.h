@@ -4,24 +4,29 @@
 
 #include <atomic>
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/lock/lock.h"
 
 namespace doraemon {
 
-class SpinLock : public Lockable {
- private:
-    std::atomic_flag lck = ATOMIC_FLAG_INIT;
+    class D_CLASS_EXPORT SpinLock : public Lockable
+    {
+    private:
+        std::atomic_flag lck = ATOMIC_FLAG_INIT;
 
- public:
-    void lock() override {
-        while (lck.test_and_set(std::memory_order_acquire)) {
+    public:
+        void lock() override
+        {
+            while (lck.test_and_set(std::memory_order_acquire))
+            {
+            }
         }
-    }
 
-    void unlock() override {
-        lck.clear(std::memory_order_release);
-    }
-};
+        void unlock() override
+        {
+            lck.clear(std::memory_order_release);
+        }
+    };
 
 };  // namespace doraemon
 

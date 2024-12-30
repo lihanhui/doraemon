@@ -4,9 +4,11 @@
 
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
 
-struct uuid {
+struct D_CLASS_EXPORT Uuid {
     static std::string uuid(){
     }
 };

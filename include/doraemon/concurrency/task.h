@@ -6,6 +6,7 @@
 
 #include "doraemon/concurrency/runnable.h"
 #include "doraemon/concurrency/promise.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 enum class TaskStatus

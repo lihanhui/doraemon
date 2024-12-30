@@ -7,12 +7,15 @@
 #include <string>
 #include <utility>
 
-namespace doraemon {
+#include "doraemon/export/export_def.h"
 
-class SharedMemoryImpl;
-class File;
+namespace doraemon
+{
 
-class SharedMemory
+    class SharedMemoryImpl;
+    class File;
+
+    class D_CLASS_EXPORT SharedMemory
     /// Create and manage a shared memory object.
     ///
     /// A SharedMemory object has value semantics, but
@@ -76,6 +79,6 @@ inline void SharedMemory::swap(SharedMemory& other) noexcept
     swap(_pImpl, other._pImpl);
 }
 
-};  // namespace doraemon
+}; // namespace doraemon
 
 #endif  // INCLUDE_DORAEMON_IPC_SHARED_MEMORY_H_

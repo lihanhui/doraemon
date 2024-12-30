@@ -5,6 +5,7 @@
 #include <future> //NOLINT [build/c++11]
 
 #include "doraemon/concurrency/future.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon
 {

@@ -6,11 +6,12 @@
 #include <string>
 #include <type_traits>
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/json/jsonable.h"
 
 namespace doraemon{
 
-struct JsonUtil {
+struct D_CLASS_EXPORT JsonUtil {
     template <typename T>
     static typename std::enable_if<std::is_base_of<Jsonable, T>::value,
         std::string>::type to_json([[maybe_unused]] const T & t) {

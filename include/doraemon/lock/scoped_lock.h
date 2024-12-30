@@ -4,25 +4,28 @@
 
 #include <atomic>
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/lock/lock.h"
 
 namespace doraemon {
 
-class ScopedLock {
- private:
-    Lockable* lck;
+   class D_CLASS_EXPORT ScopedLock
+   {
+   private:
+      Lockable *lck;
 
- private:
-    ScopedLock() {}
+   private:
+      ScopedLock() {}
 
- public:
-    explicit ScopedLock(Lockable &lck) {
-        this->lck = &lck;
-        this->lck->lock();
-    }
+   public:
+      explicit ScopedLock(Lockable &lck)
+      {
+         this->lck = &lck;
+         this->lck->lock();
+      }
 
-    ~ScopedLock() { this->lck->unlock(); }
-};
+      ~ScopedLock() { this->lck->unlock(); }
+   };
 
 };  // namespace doraemon
 

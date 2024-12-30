@@ -2,13 +2,16 @@
 #ifndef INCLUDE_DORAEMON_LOCK_LOCK_H_
 #define INCLUDE_DORAEMON_LOCK_LOCK_H_
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
 
-class Lockable {
- public:
-    virtual void lock() = 0;
-    virtual void unlock() = 0;
-};
+    class D_CLASS_EXPORT Lockable
+    {
+    public:
+        virtual void lock() = 0;
+        virtual void unlock() = 0;
+    };
 
 };  // namespace doraemon
 

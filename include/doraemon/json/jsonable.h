@@ -4,12 +4,15 @@
 
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
 
-struct Jsonable {
-    virtual std::string to_json() = 0;
-    virtual void from_json(const std::string & json) = 0;
-};
+    struct D_CLASS_EXPORT Jsonable
+    {
+        virtual std::string to_json() = 0;
+        virtual void from_json(const std::string &json) = 0;
+    };
 
 };  // namespace doraemon
 

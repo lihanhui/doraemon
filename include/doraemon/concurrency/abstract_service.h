@@ -7,6 +7,7 @@
 #include <thread>             //NOLINT [build/c++11]
 
 #include "doraemon/concurrency/service.h"
+#include "doraemon/export/export_def.h"
 
 namespace doraemon{
 

@@ -4,8 +4,10 @@
 
 #include <mutex> //NOLINT [build/c++11]
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon {
-template<typename T> struct QueueNode {
+template<typename T> struct D_CLASS_EXPORT QueueNode {
     QueueNode* next_;
     T* data_;
 
@@ -13,8 +15,10 @@ template<typename T> struct QueueNode {
     explicit QueueNode(T *data = nullptr) : next_(nullptr), data_(data) {}
 };
 
-template<typename T> class QueueFifo{
- public:
+template <typename T>
+class D_CLASS_EXPORT QueueFifo
+{
+public:
     QueueFifo(): head_(nullptr), tail_(nullptr), count_(0) { }
 
  public:

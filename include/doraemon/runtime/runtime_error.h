@@ -5,12 +5,15 @@
 #include <stdexcept>
 #include <string>
 
+#include "doraemon/export/export_def.h"
+
 namespace doraemon{
 
-class RuntimeError: std::runtime_error {
- public:
-    explicit RuntimeError(const std::string &info): std::runtime_error(info) {}
-};
+    class D_CLASS_EXPORT RuntimeError : std::runtime_error
+    {
+    public:
+        explicit RuntimeError(const std::string &info) : std::runtime_error(info) {}
+    };
 
 };  // namespace doraemon
 

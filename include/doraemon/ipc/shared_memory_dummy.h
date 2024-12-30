@@ -1,12 +1,13 @@
 #ifndef INCLUDE_DORAEMON_IPC_SHARED_MEMORY_DUMMY_H_
 #define INCLUDE_DORAEMON_IPC_SHARED_MEMORY_DUMMY_H_
 
+#include "doraemon/export/export_def.h"
 #include "doraemon/ipc/shared_memory.h"
 #include "doraemon/atomic/ref_counted_object.h"
 
 namespace doraemon {
 
-class SharedMemoryImpl: public RefCountedObject
+    class D_CLASS_EXPORT SharedMemoryImpl : public RefCountedObject
     // A dummy implementation of shared memory, for systems
     // that do not have shared memory support.
 {

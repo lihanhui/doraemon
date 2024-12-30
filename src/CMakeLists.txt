@@ -29,6 +29,7 @@ add_library(doraemon SHARED doraemon.cxx
             conf/config.cxx
             ipc/shared_memory.cxx
             md5/md5.cxx
+            time/clock.cxx
             net/net.cxx
             sys/system.cxx
             loader/loader.cxx
