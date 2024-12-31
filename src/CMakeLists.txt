@@ -20,20 +20,21 @@ ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
 #####################################
 add_library(doraemon SHARED doraemon.cxx
-            buffer/buffer.cxx 
             atomic/atomic_counter.cxx
             atomic/ref_counted_object.cxx
+            base64/base64.cxx
+            buffer/buffer.cxx
             concurrency/abstract_service.cxx
             concurrency/task_executor_service.cxx
             concurrency/thread_pool.cxx
             conf/config.cxx
             ipc/shared_memory.cxx
+            loader/loader.cxx
             md5/md5.cxx
-            time/clock.cxx
             net/net.cxx
             sys/system.cxx
-            loader/loader.cxx
-            base64/base64.cxx)
+            time/clock.cxx
+            )
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)
 target_link_libraries(doraemon  ${EXTRA_LIBS})
 
