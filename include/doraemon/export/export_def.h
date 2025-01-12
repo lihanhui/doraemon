@@ -23,8 +23,4 @@
 #define D_CLASS_HIDDEN __attribute__((visibility("hidden")))
 #endif
 
-namespace doraemon{
-    typedef uint64_t Handle;
-};
-
 #endif  // INCLUDE_DORAEMON_EXPORT_EXPORT_DEF_H_

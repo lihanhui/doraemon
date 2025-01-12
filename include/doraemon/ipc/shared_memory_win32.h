@@ -9,7 +9,7 @@
 
 namespace doraemon {
 
-    class D_CLASS_EXPORT SharedMemoryImpl : public RefCountedObject
+class D_CLASS_EXPORT SharedMemoryImpl : public RefCountedObject
     // Shared memory implementation for Windows platforms.
 {
  public:

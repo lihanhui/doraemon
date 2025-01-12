@@ -6,6 +6,6 @@
 namespace doraemon
 {
 
-    char System::PathSeperator = std::filesystem::path::preferred_separator;
+    nchar System::PathSeperator = std::filesystem::path::preferred_separator;
 
 };  // namespace doraemon
