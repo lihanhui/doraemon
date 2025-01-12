@@ -1,5 +1,7 @@
 #include "doraemon/ipc/semaphore.h"
 
+#ifdef _WIN32
+
 #include <windows.h>
 
 namespace doraemon {
@@ -76,3 +78,5 @@ void Semaphore::close()
 }
 
 }  // namespace
+
+#endif

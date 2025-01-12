@@ -24,10 +24,13 @@ add_library(doraemon SHARED doraemon.cxx
             atomic/ref_counted_object.cxx
             base64/base64.cxx
             buffer/buffer.cxx
+            buffer/shm_buffer.cxx
             concurrency/abstract_service.cxx
             concurrency/task_executor_service.cxx
             concurrency/thread_pool.cxx
             conf/config.cxx
+            ipc/semaphore_win32.cxx
+            ipc/semaphore_posix.cxx
             ipc/shared_memory.cxx
             loader/loader.cxx
             md5/md5.cxx

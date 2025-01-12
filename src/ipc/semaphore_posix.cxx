@@ -6,12 +6,15 @@
 #include <fcntl.h>
 #include <unistd.h>//*/
 
+#ifndef _WIN32
+
 #include <semaphore.h>
 
 #include "doraemon/runtime/runtime_error.h"
 
 namespace doraemon {
 
+ 
 static Handle NON_HANDLE = 0;
 
 Semaphore::Semaphore(const std::string &name, int init_value):
@@ -73,4 +76,7 @@ void Semaphore::close()
     sem_close((sem_t*)handle_);
 }
 
+
 }  // namespace doraemon
+
+#endif

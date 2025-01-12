@@ -4,6 +4,7 @@
 
 #include <string>
 
+#include "doraemon/core/type_def.h"
 #include "doraemon/export/export_def.h"
 
 namespace doraemon {

@@ -15,12 +15,10 @@
 
 #if defined(DORAMEMON_NO_SHAREDMEMORY)
 #include "shared_memory_dummy.cxx"
-#elif defined(__OS_FAMILY_WINDOWS__)
+#elif defined(_WIN32)
 #include "shared_memory_win32.cxx"
-#elif defined(__OS_FAMILY_UNIX__)
-#include "shared_memory_posix.cxx"
 #else
-#include "shared_memory_dummy.cxx"
+#include "shared_memory_posix.cxx"
 #endif
 
 namespace doraemon {

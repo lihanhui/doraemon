@@ -1,6 +1,8 @@
 // Copyright (c) 2019 Hanhui LI
 #include "doraemon/loader/loader.h"
 
+#include "doraemon/core/type_def.h"
+
 #include <string>
 
 namespace doraemon
