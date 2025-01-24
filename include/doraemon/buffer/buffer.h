@@ -4,6 +4,7 @@
 #define INCLUDE_DORAEMON_BUFFER_BUFFER_H_
 
 #include <memory>
+#include <cstring>
 #include <string>
 
 #include "doraemon/export/export_def.h"
@@ -37,7 +38,7 @@
             this->limit_ = limit;
             this->capacity_ = capacity;
             this->data_ = new unsigned char[limit];
-            memset(this->data_, 0, limit);
+	    std::memset(this->data_, 0, limit);
         }
 
         ~Buffer()

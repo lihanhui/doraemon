@@ -341,7 +341,7 @@ std::string Md5::hexdigest() const
  
   char buf[33];
   for (int i=0; i<16; i++)
-    snprintf(buf + i * 2, 2, "%02x", digest_[i]);
+    snprintf(buf + i * 2, 33-i*2, "%02x", digest_[i]);
   buf[32]=0;
  
   return std::string(buf);

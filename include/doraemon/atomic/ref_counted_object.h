@@ -66,7 +66,7 @@ inline void RefCountedObject::release() const noexcept
     }
     catch (...)
     {
-        throw std::runtime_error("");
+        //throw std::runtime_error("");
     }
 }
 
