@@ -4,6 +4,7 @@
 #define INCLUDE_DORAEMON_BUFFER_BUFFER_H_
 
 #include <memory>
+#include <cstring>
 #include <string>
 
 #include "doraemon/export/export_def.h"
@@ -26,7 +27,6 @@ private:
         this->limit_ = 0;
         this->capacity_ = 0;
     }
-
 public:
     explicit Buffer(int capacity) : Buffer(capacity, capacity)
     {
