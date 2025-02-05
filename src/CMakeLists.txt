@@ -34,6 +34,7 @@ add_library(doraemon SHARED doraemon.cxx
             net/net.cxx
             sys/system.cxx
             time/clock.cxx
+            uuid/uuid.cxx
             )
 set_target_properties(doraemon PROPERTIES VERSION 1.0 SOVERION 1)
 target_link_libraries(doraemon  ${EXTRA_LIBS})

@@ -9,8 +9,7 @@
 namespace doraemon {
 
 struct D_CLASS_EXPORT Uuid {
-    static std::string uuid(){
-    }
+    static std::string uuid();
 };
 
 };  // namespce doraemon
