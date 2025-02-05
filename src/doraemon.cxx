@@ -16,6 +16,7 @@
 #include "doraemon/sys/system.h"
 #include "doraemon/concurrency/abstract_task.h"
 #include "doraemon/concurrency/thread_pool.h"
+#include "doraemon/uuid/uuid.h"
 
 using namespace doraemon;
 
@@ -85,4 +86,9 @@ int main2([[maybe_unused]]int argc, [[maybe_unused]]char * argv[]){
               << decoded << std::endl;
 
     return 0;
+}
+
+int main(){
+    std::cout << Uuid::uuid()
+              << std::endl;
 }
