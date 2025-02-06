@@ -55,10 +55,11 @@ std::shared_ptr<Buffer> ShmBuffer::update()
     {
         return nullptr;
     }
-    if(*(uint64_t *)this->address_ != seq_){
+    if(*(uint64_t *)this->address_ == seq_){
         sem_->release();
         return nullptr;
     }
+    seq_ = *(uint64_t *)this->address_;
 
     uint32_t offset = sizeof(seq_);
     Tl *tl = (Tl*)(this->address_ + offset);
