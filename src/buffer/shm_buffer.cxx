@@ -12,6 +12,7 @@ sem_(new Semaphore(sem_name)),
 shm_(new SharedMemory(shm_name_, size_, SharedMemory::AccessMode::AM_WRITE))
 {
     address_ = shm_->begin();
+    sem_->open();
 }
 
 ShmBuffer::~ShmBuffer(){

@@ -5,6 +5,7 @@ find_package(GTest REQUIRED)
 
 add_executable(doraemon_test doraemon_test.cpp 
     base64/test_base64.cxx
+    ipc/test_semaphore.cxx
     uuid/test_uuid.cxx
     )
 

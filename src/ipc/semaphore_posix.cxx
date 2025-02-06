@@ -30,7 +30,7 @@ Semaphore::~Semaphore()
 
 bool Semaphore::open()
 {
-    if(handle_ == NON_HANDLE) return false;
+    if(handle_ != NON_HANDLE) return true;
 
     sem_t *sem;
     sem = sem_open(name_.data(), O_CREAT, 0644, value_);
