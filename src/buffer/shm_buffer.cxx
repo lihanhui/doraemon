@@ -76,6 +76,7 @@ std::shared_ptr<Buffer> ShmBuffer::update()
     std::shared_ptr<Buffer> b = std::make_shared<Buffer>(sizeof(Tl)+len);
     b->put((unsigned char *)this->address_ + offset, sizeof(Tl) + len);
     data_ = b;
+    sem_->release();
     return data_;
 }
 
